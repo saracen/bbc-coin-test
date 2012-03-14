@@ -37,6 +37,26 @@ class BBCCoinAlgorithm
 	 */
 	public function getMinimumCoins($input)
 	{
+		$retval = array();
+		
+		$i = 0;
+		foreach ($this->coinTypes as $coin) {
+			$i = floor($input / $coin);
+			
+			// avoid divide by 0
+			if ($i > 0) {
+				// subtract the coins from the input
+				$input -= $i * $coin;
+				
+				// track coins
+				$retval[$coin] = $i;
+			}
+			
+			// reset
+			$i = 0;
+		}
+		
+		return $retval;
 	}
 }
 	
