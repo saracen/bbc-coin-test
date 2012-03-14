@@ -85,8 +85,16 @@ class BBCCoinAlgorithmTests extends PHPUnit_Framework_TestCase
 	{
 		$algo = new BBCCoinAlgorithm();
 		
-		$this->assertEquals($expected, $algo->getMinimumCoins($input));
+		$coins = $algo->getMinimumCoins($input);
+		$this->assertEquals($expected, $coins);
+		
+		$amount = 0;
+		foreach ($coins as $key => $value) {
+			$amount += ($key * $value);
+		}
+		
+		$this->assertEquals($input, $amount);
 	}
 }
-	
+
 ?>
