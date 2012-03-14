@@ -5,8 +5,11 @@
 	
 	$coinAlgo = new BBCCoinAlgorithm();
 	
+	// validate data
+	$validatedAmount = $coinAlgo->validate($amount);
+	
 	// get coins
-	$coins = $coinAlgo->getMinimumCoins($amount);
+	$coins = $coinAlgo->getMinimumCoins($validatedAmount);
 	
 	if (count($coins) == 0) {
 		// invalid input
