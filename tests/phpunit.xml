@@ -1,0 +1,7 @@
+<phpunit>
+	<testsuites>
+		<testsuite name="BBCCoinAlgorithm">
+			<file>BBCCoinAlgorithm/BBCCoinAlgorithmTests.php</file>
+		</testsuite>
+	</testsuites>
+</phpunit>
