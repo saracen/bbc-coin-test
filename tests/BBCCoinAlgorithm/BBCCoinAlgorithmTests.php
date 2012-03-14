@@ -29,8 +29,23 @@ class BBCCoinAlgorithmTests extends PHPUnit_Framework_TestCase
 			array('£1p', 100), 
 			array('£1.p', 100), 
 			array('001.41p', 141), 
-			array('4.235p', 426), 
+			array('4.235p', 424), 
 			array('£1.257422457p', 126)
+		);
+	}
+	
+	/**
+	 * Data provider for testInvalidation()
+	 *
+	 * @returns      array input, expected pairs
+	 */
+	public function validationInvalidProvider()
+	{
+		return array(
+			array('', 0),
+			array('1x', 0),
+			array('£1x.0p', 0),
+			array('£p', 0)
 		);
 	}
 	
@@ -71,6 +86,22 @@ class BBCCoinAlgorithmTests extends PHPUnit_Framework_TestCase
 		$algo = new BBCCoinAlgorithm();
 		$this->assertEquals($expected, $algo->validate($input));
 	}
+	
+	/**
+	 * Tests data invalidation
+	 *
+	 * @param        mixed input value
+	 * @param        integer value in pence
+	 *
+	 * @dataProvider validationInvalidProvider
+ 	 * @asserts      equals
+	 */
+	public function testInvalidation($input, $expected)
+	{
+		$algo = new BBCCoinAlgorithm();
+		$this->assertEquals($expected, $algo->validate($input));
+	}
+	
 	
 	/**
 	 * Tests minimum coins
