@@ -26,6 +26,30 @@ class BBCCoinAlgorithm
 	 */
 	public function validate($input)
 	{
+		$pounds = false;
+		
+		// check for the £ symbol
+		if (strpos($input, '£') !== false) {
+			$pounds = true;
+		}
+		
+		// replace symbols and trim decimal point from the right
+		$input = rtrim(str_replace(array('£', 'p'), '', $input), '.');
+		
+		// find the numbers from the string
+		if (preg_match('#^([\d]+(?:\.[\d]+)?)$#', $input, $matches)) {
+			// get the match we care about...
+			$match = $matches[1];
+			
+			// we need to check if the value is decimal
+			if ($pounds || (strpos((string)$match, '.') !== false)) {
+				return round($match, 2) * 100;
+			} else {
+				return $match;
+			}
+		}
+		
+		return 0;
 	}
 	
 	/**
