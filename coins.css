@@ -1,0 +1,32 @@
+body, input, h1 {
+	font-size: 12pt;
+	font-family: "Dosis";
+}
+
+h1 {
+	margin-bottom: 2em;
+	text-align: center;
+}
+
+section {
+	width: 300px;
+	margin: 0 auto;
+}
+
+input {
+	display: block;
+	border: 1px solid #ccc;
+	width: 100%;
+}
+
+dl {
+	font-size: 200%;
+}
+
+dt {
+	float: left;
+	width: 3em;
+	text-align: right;
+	font-weight: bold;
+	margin-right: 0.5em;
+}

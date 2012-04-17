@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>BBC Coin Calculator</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="coins.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis'>
+	<link type="text/css" rel="stylesheet" href="coins.css">
+	
+	<script>
+		$(document).ready(function() {
+			coinCalculator('input', '#result');
+		});
+	</script>
+</head>
+<body>
+
+<h1>BBC Coin Calculator</h1>
+
+<section>
+	<label>
+		Amount:
+		<input type="text" onkeypress="" />
+	</label>
+	
+	<dl id="result">
+	</dl>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>BBC Coin Test</title>
+
+	<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-git.css">
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/qunit/qunit-git.js"></script>
+
+	<script type="text/javascript" src="../coins.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			test("£3.75 (375p)", function() {
+				deepEqual(
+					coinSieve(200 + 100 + 50 + 20 + 2 + 1),
+					{ 200: 1, 100: 1, 50: 1, 20: 1, 2: 1, 1: 1 },
+					"Expected 1 x £2, 1 x £1, 1 x £0.50, 1 x £0.20, 1 x £0.02, 1 x £0.01"
+				);
+			});
+			
+			test("£1.73 (173p)", function() {
+				deepEqual(
+					coinSieve(100 + 50 + 20 + 2 + 1),
+					{ 200: 0, 100: 1, 50: 1, 20: 1, 2: 1, 1: 1 },
+					"Expected 1 x £1, 1 x £0.50, 1 x £0.20, 1 x £0.02, 1 x £0.01"
+				);
+			});
+			
+			test("£0.15 (15p)", function() {
+				deepEqual(
+					coinSieve(15),
+					{ 200: 0, 100: 0, 50: 0, 20: 0, 2: 7, 1: 1 },
+					"Expected 7 x £0.02, 1 x £0.01"
+				);
+			});
+		});
+	</script>
+</head>
+<body>
+
+<h1 id="qunit-header">BBC Coin Test Suite</h1>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">
+
+</div>
+</body>
+</html>
